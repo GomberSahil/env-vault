@@ -46,9 +46,13 @@ SINGLE_WITH_SPACE='value 4'
     });
 
     it("handles multiline value in double quotes", () => {
-      const raw = `MULTILINE="line1\nline2\nline3"`;
+      const raw = `MULTILINE_SINGLE="line1\nline2\nline3"
+      MULTILINE_DOUBLE='line1\nline2\nline3'`;
       const result = parseEnv(raw);
-      expect(result).toEqual({ MULTILINE: "line1\nline2\nline3" });
+      expect(result).toEqual({
+        MULTILINE_SINGLE: "line1\nline2\nline3",
+        MULTILINE_DOUBLE: "line1\nline2\nline3",
+      });
     });
   });
 
