@@ -15,7 +15,7 @@ function parseKey(key: string): Buffer {
   return Buffer.from(key, "hex");
 }
 
-export type EncryptedPayload = {
+type EncryptedPayload = {
   iv: Buffer<ArrayBuffer>;
   authTag: Buffer<ArrayBuffer>;
   cipherText: Buffer<ArrayBuffer>;
