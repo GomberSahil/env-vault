@@ -8,10 +8,11 @@ export function generateKey(): string {
   return result;
 }
 
-function parseKey(key: string): Buffer {
+export function parseKey(key: string): Buffer {
   if (!/^[0-9a-fA-F]{64}$/.test(key)) {
     throw new Error("Key must be 64-char hex (32 bytes)");
   }
+
   return Buffer.from(key, "hex");
 }
 
