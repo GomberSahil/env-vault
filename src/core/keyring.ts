@@ -4,8 +4,9 @@ import { hkdfSync } from "node:crypto";
 import argon2 from "argon2";
 
 import { parseKey } from "./crypto.js";
-import type { VaultConfig } from "./vault.js";
 import { promptPassphrase } from "../utils/prompt.js";
+
+import type { VaultConfig } from "../types.js";
 
 export function loadKeyFromFile(keyPath: string): Buffer {
   if (!fs.existsSync(keyPath)) {

@@ -1,5 +1,7 @@
 import crypto from "node:crypto";
 
+import type { EncryptedPayload } from "../types.js";
+
 const VERSION = 0x01;
 
 export function generateKey(): string {
@@ -15,12 +17,6 @@ export function parseKey(key: string): Buffer {
 
   return Buffer.from(key, "hex");
 }
-
-type EncryptedPayload = {
-  iv: Buffer<ArrayBuffer>;
-  authTag: Buffer<ArrayBuffer>;
-  cipherText: Buffer<ArrayBuffer>;
-};
 
 export function encrypt(plainText: string, key: string): EncryptedPayload {
   const iv = crypto.randomBytes(12);

@@ -2,9 +2,15 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
-import { encryptVault, decryptVault, writeEnvFile, VaultConfig } from "../../src/core/vault.js";
+
+import {
+  encryptVault,
+  decryptVault,
+  writeEnvFile,
+} from "../../src/core/vault.js";
 import { generateKey } from "../../src/core/crypto.js";
 import { parseEnv } from "../../src/core/env-parser.js";
+import type { VaultConfig } from "../../src/types.js";
 
 describe("vault", () => {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "vault-tests-"));
@@ -35,7 +41,7 @@ describe("vault", () => {
     // Setup initial .env and .env.local
     const initialEnv = "SECRET=supersecret\nPORT=3000\n";
     const localEnv = "PORT=8080\nLOCAL_ONLY=yes\n";
-    
+
     fs.writeFileSync(envPath, initialEnv, "utf-8");
     fs.writeFileSync(localEnvPath, localEnv, "utf-8");
 
@@ -46,7 +52,7 @@ describe("vault", () => {
     // Decrypt
     const result = await decryptVault(vaultPath, localEnvPath, cfg);
 
-    // Merged results expected: 
+    // Merged results expected:
     // .env has SECRET=supersecret, PORT=3000
     // .env.local has PORT=8080, LOCAL_ONLY=yes
     // So final result should have PORT=8080 (local overrides), SECRET=supersecret, LOCAL_ONLY=yes
@@ -64,7 +70,7 @@ describe("vault", () => {
 
     // We can reuse the vault file from the previous test
     // since the encrypted vault contains SECRET=supersecret, PORT=3000
-    
+
     const result = await decryptVault(vaultPath, missingLocalPath, cfg);
 
     expect(result).toEqual({

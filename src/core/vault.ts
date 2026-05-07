@@ -6,12 +6,7 @@ import { deriveEnvKey, loadKey } from "./keyring.js";
 import { loadLocalEnv, mergeEnvs } from "./merger.js";
 import { logger } from "../utils/logger.js";
 
-export interface VaultConfig {
-  projectSlug: string;
-  keyMode: "file" | "passphrase";
-  keyPath: string;
-  argon2Salt: string;
-}
+import type { VaultConfig } from "../types.js";
 
 export async function encryptVault(
   envPath: string,

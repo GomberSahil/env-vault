@@ -1,4 +1,5 @@
 import fs from "node:fs";
+
 import { parseEnv } from "./env-parser.js";
 
 export function mergeEnvs(
