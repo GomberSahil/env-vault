@@ -4,6 +4,7 @@ import { decrypt, encrypt, parseVault, serializeVault } from "./crypto.js";
 import { parseEnv, serializeEnv } from "./env-parser.js";
 import { deriveEnvKey, loadKey } from "./keyring.js";
 import { loadLocalEnv, mergeEnvs } from "./merger.js";
+import { logger } from "../utils/logger.js";
 
 export interface VaultConfig {
   projectSlug: string;
@@ -73,7 +74,7 @@ export function writeEnvFile(
 ): void {
   // if .env exists show warning
   if (fs.existsSync(envPath)) {
-    console.warn(`Overwriting existing ${envPath}`);
+    logger.warn(`Overwriting existing env file: ${envPath}`);
   }
 
   const rawEnvText = serializeEnv(env);
