@@ -7,6 +7,7 @@ import { logger } from "../utils/logger.js";
 import type { InitOptions, VaultConfig } from "../types.js";
 import { PATHS } from "../paths.js";
 import { generateKey } from "../core/crypto.js";
+import { ensureGitignore } from '../utils/gitignore.js';
 
 export function init(initOptions: InitOptions) {
   if (fs.existsSync(PATHS.config)) {
@@ -56,6 +57,8 @@ export function init(initOptions: InitOptions) {
     logger.success("Created .env.example");
   }
 
+  ensureGitignore();
+
   logger.success("vault initialized");
   console.log("");
   logger.info("Next steps:");
@@ -64,3 +67,4 @@ export function init(initOptions: InitOptions) {
   logger.dim("3. git add .env.shared.vault .vault-config.json .env.example");
   logger.dim('4. git commit -m "chore: init vault"');
 }
+

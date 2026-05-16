@@ -9,4 +9,5 @@ export const PATHS = {
   envLocal: path.join(root, ".env.local"),
   envKey: path.join(root, ".env.key"),
   envExample: path.join(root, ".env.example"),
+  gitignore: path.join(root, ".gitignore"),
 };
