@@ -1,6 +1,7 @@
 {
-  "name": "env-vault",
+  "name": "@gombersahil/env-vault",
   "version": "0.1.0",
+  "description": "Encrypted .env management that travels with your git branches",
   "type": "module",
   "bin": {
     "vault": "./dist/cli.js"
@@ -28,5 +29,24 @@
     "@types/node": "^20.0.0",
     "typescript": "^5.0.0",
     "vitest": "^1.6.1"
-  }
+  },
+  "keywords": [
+    "env",
+    "vault",
+    "encryption",
+    "secrets",
+    "config",
+    "dotenv",
+    "git"
+  ],
+  "author": "Sahil Arora",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GomberSahil/env-vault.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GomberSahil/env-vault/issues"
+  },
+  "homepage": "https://github.com/GomberSahil/env-vault#readme"
 }

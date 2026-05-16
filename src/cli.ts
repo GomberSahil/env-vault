@@ -12,7 +12,7 @@ const require = createRequire(import.meta.url);
 const { version } = require("../package.json");
 
 program
-  .name("env-vault")
+  .name("vault")
   .description("Encrypted .env management that travels with your git branches")
   .version(version);
 
@@ -20,7 +20,7 @@ program
   .command("init")
   .description("Initialize env-vault in the current project")
   .addOption(
-    new Option("--key-mode <mode>", "key mode for encryption/decryption")
+    new Option("-k, --key-mode <mode>", "key mode for encryption/decryption")
       .choices(["file", "passphrase"])
       .default("file"),
   )
